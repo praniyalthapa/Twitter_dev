@@ -30,7 +30,11 @@ app.listen(3000,async()=>{
 // await tweet.save();
 //const tweet=await repo.getWithComments('65a392f1285bef9ec93fe3e2');
 //implementing offset and limit in our pagination 
-const tweet=await repo.getAll(0,3);
+// const tweet=await repo.getAll(0,3);
+//     console.log(tweet[0].contentWithEmail);
+const tweet=await repo.create({content:'With hooks'});
+console.log(tweet);
 
-    console.log(tweet[0].contentWithEmail);
+
+
 });

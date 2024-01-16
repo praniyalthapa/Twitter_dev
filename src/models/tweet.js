@@ -15,9 +15,18 @@ const TweetSchema = new mongoose.Schema({
         }
     ]
 },{timestamps:true});  //this is for timestamps so old data don't have this feature but new created data has new feature of timestamps
+
+
 TweetSchema.virtual('contentWithEmail').get(function process(){
     return `${this.content} \nCreated by: ${this.userEmail}`;
 });
+
+
+TweetSchema.pre('save',function(next){
+    this.content=this.content+'...';
+    console.log('First pre middleware');
+    next();
+})
 
 
 
