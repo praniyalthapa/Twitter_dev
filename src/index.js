@@ -35,6 +35,7 @@ app.listen(3000,async()=>{
 const tweet=await repo.create({content:'With hooks'});
 console.log(tweet);
 
-
+//https://mongoosejs.com/docs/api/schematype.html#SchemaType.prototype.index()
+//https://www.mongodb.com/docs/v5.0/indexes/
 
 });
