@@ -28,11 +28,11 @@ app.listen(3000,async()=>{
     // const comment=await Comment.create({content:'new comment'});
     // tweet.comments.push(comment);
 // await tweet.save();
-//const tweet=await repo.getWithComments('65a392f1285bef9ec93fe3e2');
+const tweet=await repo.getWithComments('65a392f1285bef9ec93fe3e2');
 //implementing offset and limit in our pagination 
 // const tweet=await repo.getAll(0,3);
 //     console.log(tweet[0].contentWithEmail);
-const tweet=await repo.create({content:'With hooks'});
+// const tweet=await repo.create({content:'With hooks'});
 console.log(tweet);
 
 //https://mongoosejs.com/docs/api/schematype.html#SchemaType.prototype.index()

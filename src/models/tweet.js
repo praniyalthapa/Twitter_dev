@@ -5,7 +5,7 @@ const TweetSchema = new mongoose.Schema({
         type:String,  
         required:true,
     },
-    userEmail:{   //it is not compulsory
+    userEmail:{   //it is not compulsory because there is not required option inside userEmail schema
         type:String
     },
     comments: [

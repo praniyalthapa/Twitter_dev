@@ -24,7 +24,7 @@ class TweetRepository{
     }
     async getWithComments(id){
         try {
-            const tweet=await Tweet.findById(id).populate('comments').lean();
+            const tweet=await Tweet.findById(id).populate('comments').lean(); //this lean is used to convert mongoose object into js object on your console screen
             return tweet;
             
         } catch (error) {
@@ -56,7 +56,7 @@ class TweetRepository{
     }
     async getAll(offset,limit){
         try {
-            const tweet=await Tweet.find().skip(offset).limit(limit);
+            const tweet=await Tweet.find().skip(offset).limit(limit); //this skip and limit are hooks in mongoDB
             return tweet;
             
         } catch (error) {
