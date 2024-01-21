@@ -4,29 +4,20 @@ const TweetSchema = new mongoose.Schema({
     content:{
         type:String,  
         required:true,
+      maxlength: [250,'Tweet cannot be more than 250 characters'],
     },
-    userEmail:{   //it is not compulsory because there is not required option inside userEmail schema
-        type:String
-    },
-    comments: [
+    hastags:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment',
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Hashtag'
         }
     ]
-},{timestamps:true});  //this is for timestamps so old data don't have this feature but new created data has new feature of timestamps
 
 
-TweetSchema.virtual('contentWithEmail').get(function process(){
-    return `${this.content} \nCreated by: ${this.userEmail}`;
-});
+   
+},
+ {timestamps:true});  //this is for timestamps so old data don't have this feature but new created data has new feature of timestamps
 
-
-TweetSchema.pre('save',function(next){
-    this.content=this.content+'...';
-    console.log('First pre middleware');
-    next();
-})
 
 
 
