@@ -12,9 +12,7 @@ const TweetSchema = new mongoose.Schema({
             ref:'Hashtag'
         }
     ]
-
-
-   
+  
 },
  {timestamps:true});  //this is for timestamps so old data don't have this feature but new created data has new feature of timestamps
 

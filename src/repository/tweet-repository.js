@@ -33,17 +33,6 @@ class TweetRepository{
         }
     }
 
-    async update(tweetId,data){
-       try {
-        const tweet=await Tweet.findByIdAndUpdate(tweetId, data, { new: true }); //this new:true helps to return the new updated documents while we already get updated in out document not in return console
-        return tweet;
-        
-       } catch (error) {
-        console.log(error);
-        
-       }
-
-    }
     async destroy(id){
         try {
             const tweet=await Tweet.findByIdAndRemove(id);
