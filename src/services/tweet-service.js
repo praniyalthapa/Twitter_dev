@@ -1,14 +1,42 @@
-const { TweetRepository}=require('../repository/index');
+const { TweetRepository,HashtagRepository}=require('../repository/index');
 class TweetService{
     constructor(){
         this.tweetRepository=new TweetRepository();
+        this.hashtagRepository=new HashtagRepository();
     }
     async create(data){
         //here we will get the content of tweets
         const content=data.content;
-        const tags = (content.match(/#[^\s#]+/ig) || []).map(tag => tag.slice(1));
-        console.log(tags);
+        const tags = (content.match(/#[^\s#]+/ig) || []).map((tag)=>tag.substring(1));
+        
         const tweet=await this.tweetRepository.create(data); //heps to creats a tweet
+        let alreadyPresentTags =await this.hashtagRepository.findByName(tags);
+        console.log("alreay present tags",alreadyPresentTags);
+       let titleOFTags=alreadyPresentTags=alreadyPresentTags.map(tags => tags.title);
+
+
+        // const alreadyPresentTagsResult = await this.hashtagRepository.findByName(tags);
+        // const alreadyPresentTags = alreadyPresentTagsResult.map(tag => tag.title);
+        let newTags=tags.filter(tag=>!titleOFTags.includes(tag));
+       
+        newTags=newTags.map(tag=>{
+            return {title:tag,tweets:[tweet.id]}
+        });
+       
+        
+        //we need to take out all those hastags which are not present in this array of  hashtags Logic??
+        //[Happy,Coding,Healthy,learning]-> you only have [{title:'Happy},{title:'Healthy}].Remaining two are not created we want to create these two also 
+        const response=await this.hashtagRepository.bulkCreate(newTags);
+        alreadyPresentTags.forEach((tag)=>{
+            tag.tweets.push(tweet.id);
+            tag.save();
+        });
+        
+       console.log(response);
+
+
+
+
         return tweet;
 
     }

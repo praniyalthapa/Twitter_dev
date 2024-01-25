@@ -25,7 +25,7 @@ class HashtagRepository{
     async bulkCreate(data){
         try {
             const tags=await Hashtag.insertMany(data);
-            
+            return tags;
         
             
         } catch (error) {
@@ -38,6 +38,19 @@ class HashtagRepository{
         try {
             const response=await Hashtag.findByIdAndRemove(id);
             return response;
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+    }
+    async findByName(titleList){
+        try {
+            const tags=await Hashtag.find({
+                title:titleList
+
+             });                 // }).select('title -_id'); //it will only bring title and minus the id we do -_id 
+            return tags;
             
         } catch (error) {
             console.log(error);

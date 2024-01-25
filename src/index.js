@@ -1,7 +1,7 @@
 const express=require('express');
 const connect=require('./config/database');
-const TweetRepository=require('./repository/tweet-repository');
-const HashtagRepository=require('./repository/hastag-repository');
+const {TweetRepository}=require('./repository/index');
+const TweetService=require('./services/tweet-service');
 const Comment=require('./models/comment');
 const Tweet=require('./models/tweet');
 const app=express();
@@ -16,29 +16,10 @@ app.listen(3000,async()=>{
     //     // } //     content:["new latest content here","Second tweet","what are you lookig here"]
     // }); // console.log(tweets);
    
-    let repo=new HashtagRepository;
-    await repo.bulkCreate([
-        {
-            title:'Header',
-            tweets:[]
-        },
-        {
-            title:'Coding',
-            tweets:[]
-        },
-        {
-            title:'Happy ',
-            tweets:[]
-        },
-        {
-            title:'Exited',
-            tweets:[]
-        },
-        {
-            title:'Learning',
-            tweets:[]
-        }
-        
-    ]);
+    let service=new TweetService();
+    const tweet=service.create({
+        content:'i am having #fun and #processing the task,#love '}
+        );
 
+        console.log(tweet);
 });
