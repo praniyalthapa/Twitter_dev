@@ -11,8 +11,8 @@ class TweetService{
         
         const tweet=await this.tweetRepository.create(data); //heps to creats a tweet
         let alreadyPresentTags =await this.hashtagRepository.findByName(tags);
-        console.log("alreay present tags",alreadyPresentTags);
-       let titleOFTags=alreadyPresentTags=alreadyPresentTags.map(tags => tags.title);
+     
+       let titleOFTags=alreadyPresentTags.map(tags => tags.title);
 
 
         // const alreadyPresentTagsResult = await this.hashtagRepository.findByName(tags);
@@ -31,8 +31,8 @@ class TweetService{
             tag.tweets.push(tweet.id);
             tag.save();
         });
-        
-       console.log(response);
+        console.log(response);
+    
 
 
 
