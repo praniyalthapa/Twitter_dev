@@ -9,7 +9,7 @@ app.listen(3000,async()=>{
     console.log('MongoDb is connected now');
     let ser=new service();
     await ser.create({
-        content:'Changed commonJs into es6 module #conversion #javascript'
+        content:'I am doing some debugging #THAPA #Kaji'
     });
 
     
