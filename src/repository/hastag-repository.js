@@ -1,4 +1,5 @@
-const Hashtag=require('../models/hashtags');
+// const Hashtag=require('../models/hashtags');
+import Hashtag from "../models/hashtags.js";
 class HashtagRepository{
    //creating CRUD here
     async create(data){
@@ -59,4 +60,4 @@ class HashtagRepository{
     }
 }
 
-module.exports=HashtagRepository
+export default HashtagRepository;

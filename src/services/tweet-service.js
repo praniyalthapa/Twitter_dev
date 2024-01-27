@@ -1,8 +1,15 @@
-const { TweetRepository,HashtagRepository}=require('../repository/index');
+//const { TweetRepository,HashtagRepository}=require('../repository/index');
+ //import {TweetRepository,HashtagRepository} from '../repository/index.js';
+ import Repositories from '../repository/index.js';
+
+
+
 class TweetService{
     constructor(){
-        this.tweetRepository=new TweetRepository();
-        this.hashtagRepository=new HashtagRepository();
+        // this.tweetRepository=new TweetRepository();
+        // this.hashtagRepository=new HashtagRepository();
+        this.tweetRepository = new Repositories.TweetRepository();
+    this.hashtagRepository = new Repositories.HashtagRepository();
     }
     async create(data){
         //here we will get the content of tweets
@@ -43,7 +50,7 @@ class TweetService{
 
 }
 
-module.exports=TweetService;
+export default TweetService;
 
 /*
    this is my second #amazing project and i m learning #best things. 

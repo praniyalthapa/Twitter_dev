@@ -1,5 +1,4 @@
-const mongoose=require('mongoose');
-const Comment=require('./comment');
+import mongoose from "mongoose";
 const TweetSchema = new mongoose.Schema({
     content:{
         type:String,  
@@ -21,4 +20,4 @@ const TweetSchema = new mongoose.Schema({
 
 const Tweet=mongoose.model('Tweet',TweetSchema);  //creating model using which we are connecting server
 
-module.exports=Tweet;
+export default Tweet;
