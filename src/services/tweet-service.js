@@ -1,9 +1,6 @@
 //const { TweetRepository,HashtagRepository}=require('../repository/index');
  //import {TweetRepository,HashtagRepository} from '../repository/index.js';
  import Repositories from '../repository/index.js';
-
-
-
 class TweetService{
     constructor(){
         // this.tweetRepository=new TweetRepository();
