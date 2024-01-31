@@ -1,5 +1,6 @@
 import Tweet from '../models/tweet.js';
-class TweetRepository{
+import CrudRepository from './crud-repository.js';
+class TweetRepository extends CrudRepository{ //we just extended with CRUD repos
    //creating CRUD here
     async create(data){
         try {
@@ -11,17 +12,17 @@ class TweetRepository{
             
         }
     }
-    async get(id){
-        try {
-            const tweet=await Tweet.findById(id);
-            return tweet;
+    // async get(id){
+    //     try {
+    //         const tweet=await Tweet.findById(id);
+    //         return tweet;
             
-        } catch (error) {
-            console.log(error);
+    //     } catch (error) {
+    //         console.log(error);
             
-        }
+    //     }
 
-    }
+    // }
     async getWithComments(id){
         try {
             const tweet=await Tweet.findById(id).populate('comments').lean(); //this lean is used to convert mongoose object into js object on your console screen
@@ -33,16 +34,16 @@ class TweetRepository{
         }
     }
 
-    async destroy(id){
-        try {
-            const tweet=await Tweet.findByIdAndRemove(id);
-            return tweet;
+    // async destroy(id){ //as we have extended we don't need this operation 
+    //     try {
+    //         const tweet=await Tweet.findByIdAndRemove(id);
+    //         return tweet;
             
-        } catch (error) {
-            console.log(error);
+    //     } catch (error) {
+    //         console.log(error);
             
-        }
-    }
+    //     }
+    // }
     async getAll(offset,limit){
         try {
             const tweet=await Tweet.find().skip(offset).limit(limit); //this skip and limit are hooks in mongoDB
