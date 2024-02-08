@@ -2,7 +2,7 @@
 import express from 'express';
 import { connect } from './config/database.js';
 import { UserRepository, TweetRepository } from './repository/index.js';
-import { LikeService } from './services/like-service.js';
+import  LikeService  from './services/like-service.js';
 import bodyParser from 'body-parser';
 //import  TweetService  from './services/tweet-service.js';
 import apiRoutes from './routes/index.js';
@@ -18,14 +18,10 @@ app.listen(3000,async()=>{
     const userRepo=new  UserRepository();
  const tweetRepo=new TweetRepository();
     const tweets= await tweetRepo.getAll(0,4);
-   const user=await userRepo.create({
-    email:'hamroNepal',
-    password:'nepal123',
-    name:'done now'
-   });
+   const users=await userRepo.getAll();
 //from this user obj we are going to like 
   const likeService=new LikeService();
-   await likeService.toggleLike(tweets[0]._id,'Tweet',user.id);    //modelId,modelType,userId
+   await likeService.toggleLike(tweets[0].id,'Tweet',users[0].id);    //modelId,modelType,userId
    console.log(likeService);
 });   
 
