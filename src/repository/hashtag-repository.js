@@ -8,8 +8,7 @@ class HashtagRepository{
             return hashtag;
             
         } catch (error) {
-            console.log(error);
-            
+            console.log(error);           
         }
     }
     async get(id){
@@ -21,28 +20,22 @@ class HashtagRepository{
             console.log(error);
             
         }
-
     }
     async bulkCreate(data){
         try {
             const tags=await Hashtag.insertMany(data);
-            return tags;
-        
-            
+            return tags;             
         } catch (error) {
-            console.log(error);
-            
+            console.log(error);         
         }
     }
-
     async destroy(id){
         try {
             const response=await Hashtag.findByIdAndRemove(id);
             return response;
             
         } catch (error) {
-            console.log(error);
-            
+            console.log(error);           
         }
     }
     async findByName(titleList){
