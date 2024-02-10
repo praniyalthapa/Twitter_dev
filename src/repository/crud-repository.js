@@ -42,10 +42,11 @@ class CrudRepository {
     }
     async update(id, data) {
         try {
-            const result = await this.model.findByIdAndUpdate(id, data, {new: true});////this new:true is for reflecting the updated data in console
+            const result = await this.model.findByIdAndUpdate(id, data, {new: true});//this new:true is for reflecting the updated data in console
             return result;
         } catch(error) {
-            console.log("Something went wrong in crud repo");         throw error;
+            console.log("Something went wrong in crud repo");  
+            throw error;
         }
     }
 }

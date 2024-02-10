@@ -16,24 +16,25 @@ import CrudRepository from "./crud-repository.js";
 //   }
 
 // }
+// export default LikeRepository;
+
 class LikeRepository extends CrudRepository {
-   constructor() {
-       super(Like);
-   }
+    constructor() {
+      super(Like);
+    }
+  
+    async findByUserAndLikeable(data) {
+      try {
+        const like = await Like.findOne(data).exec();
+        return like;
+      } catch (error) {
+        throw error;
+      }
+    }
+  }
+  
+  export default LikeRepository;
+  
 
-   async findByUserAndLikeable(data) {
-       try {
-           const like = await Like.findOne(data);
-           if (!like) {
-               return null;  // or handle the case when nothing is found
-           }
 
-           // Convert the plain object to a Mongoose model instance
-           return new Like(like.toObject());
-       } catch (error) {
-           throw error;
-       }
-   }
-}
 
-export default LikeRepository;

@@ -15,13 +15,24 @@ app.listen(3000,async()=>{
     console.log('Server Started');
     await connect();
     console.log('MongoDb is connected now');
-    const userRepo=new  UserRepository();
- const tweetRepo=new TweetRepository();
-    const tweets= await tweetRepo.getAll(0,4);
-   const users=await userRepo.getAll();
-//from this user obj we are going to like 
-  const likeService=new LikeService();
-   await likeService.toggleLike(tweets[0].id,'Tweet',users[0].id);    //modelId,modelType,userId
-   console.log(likeService);
+//     const userRepo=new  UserRepository();
+//  const tweetRepo=new TweetRepository();
+//     const tweets= await tweetRepo.getAll(0,4);
+//    const users=await userRepo.getAll();
+// //from this user obj we are going to like 
+//   const likeService=new LikeService();
+//    await likeService.toggleLike(tweets[0].id,'Tweet',users[0].id);    //modelId,modelType,userId
+//    console.log(likeService);
+// const user = await userRepo.create({
+//    email: 'example@example.com',
+//    password: 'password123',
+//    name: 'John Doe'
+// });
+
+// const tweets = await tweetRepo.getAll(0, 2);
+// console.log(tweets);
+// const likeService = new LikeService();
+// await likeService.toggleLike(tweets[0]._id, 'Tweet', user._id); // modelId, modelType, userId
+// console.log(likeService);
 });   
 
