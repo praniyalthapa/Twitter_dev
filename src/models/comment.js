@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 const commentSchema = new mongoose.Schema({
     content:{
         type:String,  
@@ -18,7 +18,14 @@ const commentSchema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
         required:true,
         refPath:'onModel'
+  },
+  comments:[
+  {
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Comment'
   }
+     
+  ]
   
 },{timestamps:true});  //this is for timestamps so old data don't have this feature but new created data has new feature of timestamps
 
