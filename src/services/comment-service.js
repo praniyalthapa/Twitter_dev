@@ -2,8 +2,8 @@ import {CommentRepository,TweetRepository} from "../repository/index.js";
 
 class CommentService{
     constructor(){
-        this.commentRepo=new CommentRepository();
-        this.tweetRepo=new TweetRepository();
+        this.commentRepository=new CommentRepository();
+        this.tweetRepository=new TweetRepository();
     }
 async createComment(modelId,modelType,userId){
 
@@ -11,11 +11,11 @@ async createComment(modelId,modelType,userId){
         var commentable = await this.tweetRepository.get(modelId);
     } else if(modelType == 'Comment') {
         // TODO
-        var likeable=await this.CommentRepository.get(modelId);
+        var likeable=await this.commentRepository.get(modelId);
     } else {
         throw new Error('unknown model type');
     }
-    const comment=await this.CommentRepository.create({
+    const comment=await this.commentRepository.create({
         content:content,
         userId:userId,
         onModel:modelType,
