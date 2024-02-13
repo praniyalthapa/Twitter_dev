@@ -12,7 +12,7 @@ const commentSchema = new mongoose.Schema({
     onModel:{
         type:String,
       required:true,
-      enum:['Tweet','Commment'] //we can comment on a tweet or in a comment only
+      enum:['Tweet','Comment'] //we can comment on a tweet or in a comment only
     },
   commentable:{
     type:mongoose.Schema.Types.ObjectId,
