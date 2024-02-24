@@ -13,7 +13,8 @@ export const signup = async (req, res) => {
             data: response,
             err: {}
         });
-    } catch(err) {
+    } 
+    catch(err) {
         return res.status(500).json({
             message: 'Something went wrong',
             data: {},
@@ -25,20 +26,7 @@ export const signup = async (req, res) => {
 
 export  const login=async (req,res)=>{
     try {
-        const user=await userService.getUserByEmail(req.body.email);
-        if(!user){
-            return res.status(401).json({
-                message:'No any user found',
-                success:false
-            })
-        }
-       if(!user.comparePassword(req.body.password)){
-        return res.status(401).json({
-            message:'Incorrect password',
-            success:false
-        })
-       }
-        const token=user.genJWT();
+        const token=await userService.signin(req.body);
         return res.status(200).json({
             success:true,
             message:'Successfully logged in',
@@ -50,7 +38,7 @@ export  const login=async (req,res)=>{
             message: 'Something went wrong',
             data: {},
             success: false,
-            err: err
+            err: error
         });
     }
 }
