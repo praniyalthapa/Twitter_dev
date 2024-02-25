@@ -1,7 +1,7 @@
 import passport from "passport";
 
 //this is going to be like a middleware
-export const authenticate=(req,res)=>{
+export const authenticate=(req,res,next)=>{
     passport.authenticate('jwt',(err,user)=>{
         if(err) next(err);
         if(!user){
@@ -11,5 +11,5 @@ export const authenticate=(req,res)=>{
         }
         req.user=user;
         next();
-    });
+    })(req,res,next);
 }
