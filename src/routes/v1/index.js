@@ -9,7 +9,7 @@ const router=express.Router();
 router.post('/tweets',authenticate, createTweet);
 router.get('/tweets/:id',getTweet);
 
-router.post('/likes/toogle',toogleLike);
+router.post('/likes/toogle',authenticate,toogleLike);
 router.post('/comments',createComment);
 router.post('/signup', signup);
 
